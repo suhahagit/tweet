@@ -1,5 +1,5 @@
 
-//Tweeter
+//Tweeter Logic Module
 
 const Tweeter = function () {
     
