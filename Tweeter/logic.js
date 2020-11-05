@@ -1,19 +1,9 @@
-// const postIdCounter = function(posts){
-//     let postsCounter = 0
-//     for (let post in posts)
-//     postsCounter++
-//     return postsCounter
-// }
 
-// let commentIdCounter = function(posts){
-//     let commentCounter = 0
-//     for (let comment in posts.comments)
-
-// }
-
+//Tweeter
 
 const Tweeter = function () {
-    let _posts = [
+    
+    const _posts = [
         {
             text: "First post!",
             id: "p1",
@@ -37,9 +27,8 @@ const Tweeter = function () {
     let postIdCounter = 2
     let commentIdCounter = 6
 
-    const getPosts = function () {
-        return _posts
-    }
+    const getPosts = () => _posts
+    
     const addPost = function (str) {
         postIdCounter++
         let newPost = {
@@ -49,6 +38,7 @@ const Tweeter = function () {
         }
         _posts.push(newPost)
     }
+
     const removePost = function (postId) {
         for(let post in _posts){
             if(_posts[post].id == postId){
@@ -56,12 +46,12 @@ const Tweeter = function () {
             }
         }
     }
+
     const addComment = function(txt,postId){
         commentIdCounter++
         let newComments = {
             id: "c" + commentIdCounter.toString(),
             text: txt
-           
         } 
         for(let post of _posts){
             if(postId == post.id){
@@ -69,7 +59,8 @@ const Tweeter = function () {
             }
         }
     }
-    const removeComment = function(postId,commentID){
+    
+    const removeComment = function(postId, commentID){
         for(let post of _posts){
             if(postId == post.id){
                 for(let comment in post.comments){
@@ -80,6 +71,7 @@ const Tweeter = function () {
             }
         }
     }
+
     return {
         addPost: addPost,
         removePost: removePost,
@@ -89,29 +81,29 @@ const Tweeter = function () {
     }
 }
 
-const tweeter = Tweeter()
+// const tweeter = Tweeter()
 
-tweeter.addPost("This is my own post!")
-console.log(tweeter.getPosts())
-//This should be added to the posts array:
-//{text: "This is my own post!", id: "p3", comments: []}
+// tweeter.addPost("This is my own post!")
+// console.log(tweeter.getPosts())
+// //This should be added to the posts array:
+// //{text: "This is my own post!", id: "p3", comments: []}
 
-tweeter.removePost("p1")
-console.log(tweeter.getPosts())
-//There should only be two posts in the post's array:
-//{text: "Aw man, I wanted to be first", id: "p2", comments: Array(3)}
-//{text: "This is my own post!", id: "p3", comments: []}
+// tweeter.removePost("p1")
+// console.log(tweeter.getPosts())
+// //There should only be two posts in the post's array:
+// //{text: "Aw man, I wanted to be first", id: "p2", comments: Array(3)}
+// //{text: "This is my own post!", id: "p3", comments: []}
 
-tweeter.addComment("Damn straight it is!", "p3")
-tweeter.addComment("Second the best!", "p2")
-console.log(tweeter.getPosts())
-//This should be added to the third post's comments array:
-//{id: "c7", text: "Damn straight it is!"}
+// tweeter.addComment("Damn straight it is!", "p3")
+// tweeter.addComment("Second the best!", "p2")
+// console.log(tweeter.getPosts())
+// //This should be added to the third post's comments array:
+// //{id: "c7", text: "Damn straight it is!"}
 
-//This should be added to the second post's comments array:
-//{id: "c8", text: "Second the best!"}
+// //This should be added to the second post's comments array:
+// //{id: "c8", text: "Second the best!"}
 
-tweeter.removeComment("p2", "c6")
-console.log(tweeter.getPosts())
-//This comment should be removed:
-//{id: "c6", text: "Haha second place what a joke."}
+// tweeter.removeComment("p2", "c6")
+// console.log(tweeter.getPosts())
+// //This comment should be removed:
+// //{id: "c6", text: "Haha second place what a joke."}
